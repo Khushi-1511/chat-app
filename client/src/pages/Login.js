@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5001/api/auth/login', {
+        const res = await axios.post('https://chat-app-server-iltg.onrender.com/api/auth/login', {
         email,
         password
       });

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:5001');
+const socket = io('https://chat-app-server-iltg.onrender.com');
 
 const Chat = () => {
   const { user, logout } = useAuth();
@@ -20,7 +20,7 @@ const Chat = () => {
 
   // Fetch all rooms on load
   useEffect(() => {
-    axios.get('http://localhost:5001/api/rooms')
+    axios.get('https://chat-app-server-iltg.onrender.com/api/rooms')
       .then(res => setRooms(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -102,7 +102,7 @@ const Chat = () => {
   const createRoom = async () => {
     if (!newRoomName.trim()) return;
     try {
-      const res = await axios.post('http://localhost:5001/api/rooms/create', {
+        const res = await axios.post('https://chat-app-server-iltg.onrender.com/api/rooms/create', {
         name: newRoomName.toLowerCase(),
         userId: user.id
       });
